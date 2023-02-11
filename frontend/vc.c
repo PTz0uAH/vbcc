@@ -287,6 +287,10 @@ static int read_config(const char *cfg_name)
                }
                strcat(buf, cfg_name);
                file=fopen(buf, "r");
+               if (!file) {
+            	   strcat(buf, ".config");
+                   file=fopen(buf, "r");
+               }
     }
 #endif
     if(!file) {puts("No config file!");raus(EXIT_FAILURE);}
